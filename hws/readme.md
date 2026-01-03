@@ -2,7 +2,7 @@
 
 ###  Топология:
 
-![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw1/Screens/1.png?raw=true)
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw2/Screens/2.png)
 
 ###  Цели:
        

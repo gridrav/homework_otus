@@ -416,3 +416,5 @@ Vlan1 is up, line protocol is up
 ![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw1/Screens/ping2.png?raw=true)
 
 ##### Шаг 3. Проверим удаленное управление коммутатором S1.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw1/Screens/save.png?raw=true)

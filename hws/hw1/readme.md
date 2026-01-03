@@ -407,4 +407,12 @@ Vlan1 is up, line protocol is up
 
 ##### Шаг 2. Протестируем сквозное соединение, отправив эхо-запрос.
 
+В командной строке компьютера PC-A с помощью утилиты ping проверим связь сначала с адресом PC-A.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw1/Screens/ping1.png?raw=true)
+
+Из командной строки компьютера PC-A отправим эхо-запрос на административный адрес интерфейса SVI коммутатора S1.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw1/Screens/ping2.png?raw=true)
+
 ##### Шаг 3. Проверим удаленное управление коммутатором S1.

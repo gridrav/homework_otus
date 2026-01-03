@@ -418,3 +418,7 @@ Vlan1 is up, line protocol is up
 ##### Шаг 3. Проверим удаленное управление коммутатором S1.
 
 ![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw1/Screens/save.png?raw=true)
+
+Сохраненный файл cisco packet tracer [lab1.pkt]
+
+[lab1.pkt]:https://github.com/gridrav/homework_otus/blob/main/hws/hw1/Screens/lab1.pkt?raw=true

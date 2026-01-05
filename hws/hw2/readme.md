@@ -250,3 +250,7 @@ c)Подключившись через консоль к коммутатору
 Появились ли в ARP-кэше компьютера PC-B дополнительные записи для всех сетевых устройств, которым были отправлены эхо-запросы?
 
 > Появились
+
+Сохраненный файл cisco packet tracer [lab2.pkt]
+
+[lab2.pkt]:https://github.com/gridrav/homework_otus/blob/main/hws/hw2/Screens/lab2.pkt

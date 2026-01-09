@@ -188,3 +188,7 @@ PC-B получит глобальный префикс маршрутизаци
 ![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw4/Screens/Screenshot_18.png)
 
 Примечание.  В случае отсутствия сквозного подключения проверьте, правильно ли указаны IPv6-адреса на всех устройствах.
+
+Сохраненный файл cisco packet tracer [lab4.pkt]
+
+[lab4.pkt]:https://github.com/gridrav/homework_otus/blob/main/hws/hw4/Screens/lab4.pkt

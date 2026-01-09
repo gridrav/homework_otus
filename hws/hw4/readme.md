@@ -34,28 +34,107 @@
 
 Назначьте имя хоста и настройте основные параметры устройства.
 
+```
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#hostname R1
+R1(config)#no ip domain-lookup
+R1(config)#enable secret cisco
+R1(config)#line console 0
+R1(config-line)#pas
+R1(config-line)#password cisco
+R1(config-line)#login
+R1(config-line)#exit
+R1(config)#
+R1(config)#banner motd #USE R1#
+R1(config)#exit
+```
+
 ##### Шаг 2. Настройте коммутатор.
+
 Назначьте имя хоста и настройте основные параметры устройства.
 
-
-
-
-
-
-
-![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw4/Screens/network.png)
-
-
-
-+ Подключимся к консоли коммутатора S1 через консольный кабель и выполним базовую настройку
-
 ```
-Switch>
-Switch>
-Switch>en
 Switch#conf t
-Switch(config)#no ip domain-lookup
 Switch(config)#hostname S1
+S1(config)#no ip domain-lookup
+S1(config)#enable secret cisco
+S1(config)#line console 0
+S1(config-line)#pas
+S1(config-line)#password cisco
+S1(config-line)#login
 S1(config)#exit
+S1(config)#banner motd #USE S1#
 ```
 
+#### Часть 2. Ручная настройка IPv6-адресов
+
+##### Шаг 1. Назначьте IPv6-адреса интерфейсам Ethernet на R1.
+
++ Назначьте глобальные индивидуальные IPv6-адреса, указанные в таблице адресации обоим интерфейсам Ethernet на R1.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw4/Screens/Screenshot_1.png)
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw4/Screens/Screenshot_2.png)
+
++ Введите команду show ipv6 interface brief, чтобы проверить, назначен ли каждому интерфейсу корректный индивидуальный IPv6-адрес.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw4/Screens/Screenshot_3.png)
+
++ Чтобы обеспечить соответствие локальных адресов канала индивидуальному адресу, вручную введите локальные адреса канала на каждом интерфейсе Ethernet на R1.
+  
+```
+R1> enable
+R1# configure terminal
+R1(config)# interface GigabitEthernet0/0/0
+R1(config-if)# ipv6 address fe80::1 link-local
+R1(config-if)# exit
+```
++ Используйте выбранную команду, чтобы убедиться, что локальный адрес связи изменен на fe80::1.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw4/Screens/Screenshot_4.png)
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw4/Screens/Screenshot_5.png)
+
+Какие группы многоадресной рассылки назначены интерфейсу G0/0?
+
+< FF02::1
+
+##### Шаг 2. Активируйте IPv6-маршрутизацию на R1.
+
++ В командной строке на PC-B введите команду ipconfig, чтобы получить данные IPv6-адреса, назначенного интерфейсу ПК.
+
+Назначен ли индивидуальный IPv6-адрес сетевой интерфейсной карте (NIC) на PC-B?
+
++ Активируйте IPv6-маршрутизацию на R1 с помощью команды IPv6 unicast-routing.
+
++ Теперь, когда R1 входит в группу многоадресной рассылки всех маршрутизаторов, еще раз введите команду ipconfig на PC-B. Проверьте данные IPv6-адреса.
+
+Почему PC-B получил глобальный префикс маршрутизации и идентификатор подсети, которые вы настроили на R1?
+
+##### Шаг 3. Назначьте IPv6-адреса интерфейсу управления (SVI) на S1.
+
++ Назначьте адрес IPv6 для S1. Также назначьте этому интерфейсу локальный адрес канала fe80::b.
+  
++ Проверьте правильность назначения IPv6-адресов интерфейсу управления с помощью команды show ipv6 interface vlan1.
+Закройте окно настройки.
+
+##### Шаг 4. Назначьте компьютерам статические IPv6-адреса.
+
++ Откройте окно Свойства Ethernet для каждого ПК и назначьте адресацию IPv6.
+  
+Убедитесь, что оба компьютера имеют правильную информацию адреса IPv6
+
+#### Часть 3. Проверка сквозного подключения
+
+С PC-A отправьте эхо-запрос на FE80::1. Это локальный адрес канала, назначенный G0/1 на R1.
+
+Отправьте эхо-запрос на интерфейс управления S1 с PC-A.
+
+Введите команду tracert на PC-A, чтобы проверить наличие сквозного подключения к PC-B.
+
+С PC-B отправьте эхо-запрос на PC-A.
+
+С PC-B отправьте эхо-запрос на локальный адрес канала G0/0 на R1.
+
+Примечание.  В случае отсутствия сквозного подключения проверьте, правильно ли указаны IPv6-адреса на всех устройствах.

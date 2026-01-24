@@ -2,7 +2,7 @@
 
 ###  Топология:
 
-![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw4/Screens/top1.png)
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/top1.png)
 
 ###     Таблица адресации:
 
@@ -28,27 +28,9 @@
 
 ##### Шаг 1. Создайте сеть согласно топологии.
 
-![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw4/Screens/top2.png)
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/top2.png)
 
 ##### Шаг 2. Выполните инициализацию и перезагрузку маршрутизатора и коммутатора.
-
-Назначьте имя хоста и настройте основные параметры устройства.
-
-```
-Router#conf t
-Enter configuration commands, one per line.  End with CNTL/Z.
-Router(config)#hostname R1
-R1(config)#no ip domain-lookup
-R1(config)#enable secret cisco
-R1(config)#line console 0
-R1(config-line)#pas
-R1(config-line)#password cisco
-R1(config-line)#login
-R1(config-line)#exit
-R1(config)#
-R1(config)#banner motd #USE R1#
-R1(config)#exit
-```
 
 ##### Шаг 3. Настройте маршрутизатор.
 
@@ -63,16 +45,20 @@ R1(config)#exit
 + Настройте и активируйте на маршрутизаторе интерфейс G0/0/1, используя информацию, приведенную в таблице адресации.
 + Сохраните текущую конфигурацию в файл загрузочной конфигурации.
 
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_1.png)
+
 ##### Шаг 4. Настройте компьютер PC-A.
                           
 + Настройте для PC-A IP-адрес и маску подсети.
 + Настройте для PC-A шлюз по умолчанию.
 
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_3.png)
+
 ##### Шаг 5. Проверьте подключение к сети.
 
 Пошлите с PC-A команду Ping на маршрутизатор R1. Если эхо-запрос с помощью команды ping не проходит, найдите и устраните неполадки подключения.
 
-Закройте окно настройки.
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_4.png)
 
 #### Часть 2. Настройка маршрутизатора для доступа по протоколу SSH
 
@@ -82,35 +68,46 @@ R1(config)#exit
 
 При генерации ключа шифрования в качестве его части используются имя устройства и домен. Поэтому эти имена необходимо указать перед вводом команды crypto key.
 Откройте окно конфигурации
-                a. Задайте имя устройства.
-                b. Задайте домен для устройства.
 
-##### Шаг 2. Создайте ключ шифрования с указанием его длины.                
++ Задайте имя устройства.
++ Задайте домен для устройства.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_5.png)
+
+##### Шаг 2. Создайте ключ шифрования с указанием его длины. 
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_6.png)
            
 ##### Шаг 3. Создайте имя пользователя в локальной базе учетных записей.
 
-Настройте имя пользователя, используя admin в качестве имени пользователя и Adm1nP @55 в качестве пароля.
+Настройте имя пользователя, используя admin в качестве имени пользователя и Adm1nP@55 в качестве пароля.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_7.png)
             
 ##### Шаг 4. Активируйте протокол SSH на линиях VTY.
 
 + Активируйте протоколы Telnet и SSH на входящих линиях VTY с помощью команды transport input.
   
 + Измените способ входа в систему таким образом, чтобы использовалась проверка пользователей по локальной базе учетных записей.
-                
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_8.png)
+
 ##### Шаг 5. Сохраните текущую конфигурацию в файл загрузочной конфигурации.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_9.png)
 
 ##### Шаг 6. Установите соединение с маршрутизатором по протоколу SSH.
 
 + Запустите Tera Term с PC-A.
-+ Установите SSH-подключение к R1. Use the username admin and password Adm1nP@55. У вас должно получиться установить SSH-подключение к R1.
++ Установите SSH-подключение к R1. (username admin, password Adm1nP@55).
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_10.png)
 
 ##### Часть 3. Настройка коммутатора для доступа по протоколу SSH
         
 В части 3 вам предстоит настроить коммутатор для приема подключений по протоколу SSH, а затем установить SSH-подключение с помощью программы Tera Term.
 
 #####  Шаг 1. Настройте основные параметры коммутатора.
-
-Откройте окно конфигурации
 
 + Подключитесь к коммутатору с помощью консольного подключения и активируйте привилегированный режим EXEC.
 + Войдите в режим конфигурации.
@@ -120,8 +117,13 @@ R1(config)#exit
 + Назначьте cisco в качестве пароля VTY и включите вход в систему по паролю.
 + Зашифруйте открытые пароли.
 + Создайте баннер, который предупреждает о запрете несанкционированного доступа.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_11.png)
+
 + Настройте и активируйте на коммутаторе интерфейс VLAN 1, используя информацию, приведенную в таблице адресации.
 + Сохраните текущую конфигурацию в файл загрузочной конфигурации.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_12.png)
 
 #####  Шаг 2. Настройте коммутатор для соединения по протоколу SSH.
 
@@ -131,16 +133,23 @@ R1(config)#exit
 + Задайте домен для устройства.
 + Создайте ключ шифрования с указанием его длины.
 + Создайте имя пользователя в локальной базе учетных записей.
+  
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_13.png)
+
 + Активируйте протоколы Telnet и SSH на линиях VTY.
 + Измените способ входа в систему таким образом, чтобы использовалась проверка пользователей по локальной базе учетных записей.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_14.png)
 
 ##### Шаг 3. Установите соединение с коммутатором по протоколу SSH.
 
 Запустите программу Tera Term на PC-A, затем установите подключение по протоколу SSH к интерфейсу SVI коммутатора S1.
 
-Вопрос:
-Удалось ли вам установить SSH-соединение с коммутатором?
-> ___
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_15.png)
+
+Вопрос: Удалось ли вам установить SSH-соединение с коммутатором?
+
+> Одновременно Telnet и SSH не удалось активировать, оставил только ssh.
 
 ##### Часть 4. Настройка протокола SSH с использованием интерфейса командной строки (CLI) коммутатора
 
@@ -148,56 +157,28 @@ R1(config)#exit
 
 ##### Шаг 1. Посмотрите доступные параметры для клиента SSH в Cisco IOS.
 
-Откройте окно конфигурации
-
 Используйте вопросительный знак (?), чтобы отобразить варианты параметров для команды ssh.
 
-S1# ssh? 
-  -c Select encryption algorithm
-  -l Log in using this user name
-  -m Select HMAC algorithm
-  -o Specify options
-  -p Connect to this port
-  -v Specify SSH Protocol Version
-  -vrf Specify vrf name
-  WORD IP-адрес или имя хоста удаленной системы
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_16.png)
 
 ##### Шаг 2. Установите с коммутатора S1 соединение с маршрутизатором R1 по протоколу SSH.
 
 + Чтобы подключиться к маршрутизатору R1 по протоколу SSH, введите команду –l admin. Это позволит вам войти в систему под именем admin. При появлении приглашения введите в качестве пароля Adm1nP@55
 
-```
-S1# ssh -l admin 192.168.1.1
-Password: 
-Authorized Users Only!
-R1>
-```
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_17.png)
 
 + Чтобы вернуться к коммутатору S1, не закрывая сеанс SSH с маршрутизатором R1, нажмите комбинацию клавиш Ctrl+Shift+6. Отпустите клавиши Ctrl+Shift+6 и нажмите x. Отображается приглашение привилегированного режима EXEC коммутатора.
 
-```
-R1>
-S1#
-```
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_18.png)
 
 + Чтобы вернуться к сеансу SSH на R1, нажмите клавишу Enter в пустой строке интерфейса командной строки. Чтобы увидеть окно командной строки маршрутизатора, нажмите клавишу Enter еще раз.
 
-```
-S1#
-[Resuming connection 1 to 192.168.1.1 ... ]
-
-R1>
-```
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_19.png)
 
 + Чтобы завершить сеанс SSH на маршрутизаторе R1, введите в командной строке маршрутизатора команду exit.
 
-```
-R1# exit
-
-[Connection to 192.168.1.1 closed by foreign host]
-S1#
-```
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/Screenshot_20.png)
 
 Вопрос:
 Какие версии протокола SSH поддерживаются при использовании интерфейса командной строки?
-> ___
+> SSH 1.99 - поддерживает обе версии протокола.

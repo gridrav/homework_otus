@@ -34,14 +34,6 @@
 
 + Подключимся к консоли коммутатора S1 через консольный кабель и выполним базовую настройку
 
-'''
-Switch(config)#no ip domain-lookup
-Switch(config)#hostname S1
-S1(config)#service password-encryption
-S1(config)#enable secret class
-S1(config)#banner motd #
-'''
-
 ##### Шаг 3. Настройте маршрутизатор.
 
 + Подключитесь к маршрутизатору с помощью консоли и активируйте привилегированный режим EXEC.

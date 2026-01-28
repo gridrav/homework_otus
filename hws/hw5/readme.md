@@ -182,3 +182,8 @@
 Вопрос:
 Какие версии протокола SSH поддерживаются при использовании интерфейса командной строки?
 > SSH 1.99 - поддерживает обе версии протокола.
+
+
+Сохраненный файл cisco packet tracer [lab5.pkt]
+
+[lab5.pkt]:https://github.com/gridrav/homework_otus/blob/main/hws/hw5/Screens/lab5.pkt

@@ -67,9 +67,14 @@
 + Установите cisco в качестве пароля виртуального терминала и активируйте вход.
 + Зашифруйте открытые пароли.
 + Создайте баннер с предупреждением о запрете несанкционированного доступа к устройству.
+
+  ![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/r1.png)
+  
 + Сохраните текущую конфигурацию в файл загрузочной конфигурации.
 + Настройте на маршрутизаторе время.
 Закройте окно настройки.
+
+ ![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/r1_1.png)
 
 ##### Шаг 3. Настройте базовые параметры каждого коммутатора.
 
@@ -84,9 +89,25 @@
 + Сохранение текущей конфигурации в качестве начальной.
 Закройте окно настройки.
 
+Для первого коммутатора
+
+ ![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_1.png)
+
+ ![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_2.png)
+
+Для второго коммутатора
+
+ ![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_3.png)
+ 
+ ![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_4.png)
+
 ##### Шаг 4. Настройте узлы ПК.
 
 Адреса ПК можно посмотреть в таблице адресации.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_5.png)
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_6.png)
         
 #### Часть 2. Создание сетей VLAN и назначение портов коммутатора
 

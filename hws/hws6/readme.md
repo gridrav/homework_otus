@@ -117,15 +117,210 @@
 
 + Создайте и назовите необходимые VLAN на каждом коммутаторе из таблицы выше.
 Откройте окно конфигурации
-+ Настройте интерфейс управления и шлюз по умолчанию на каждом коммутаторе, используя информацию об IP-адресе в таблице адресации. 
+
+```
+S1#conf t
+S1(config)#vlan 10
+S1(config-vlan)#name Management
+S1(config-vlan)#exit
+S1(config)#vlan 20
+S1(config-vlan)#name Sales
+S1(config-vlan)#exit
+S1(config)#vlan 30
+S1(config-vlan)#name Operations
+S1(config-vlan)#exit
+S1(config)#vlan 999
+S1(config-vlan)#name Parking_lot
+S1(config-vlan)#vlan 1000
+S1(config-vlan)#name Native
+S1(config-vlan)#exit
+S1(config)#
+```
+
+```
+S2#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+S2(config)#vlan 10
+S2(config-vlan)#name Management
+S2(config-vlan)#exit
+S2(config)#vlan 20
+S2(config-vlan)#name Sales
+S2(config-vlan)#exit
+S2(config)#vlan 30
+S2(config-vlan)#name Operations
+S2(config-vlan)#exit
+S2(config)#vlan 999
+S2(config-vlan)#name Parking_Lot
+S2(config-vlan)#exit
+S2(config)#vlan 1000
+S2(config-vlan)#name Native
+S2(config-vlan)#exit
+S2(config)#
+```
+
++ Настройте интерфейс управления и шлюз по умолчанию на каждом коммутаторе, используя информацию об IP-адресе в таблице адресации.
+  
+```
+S1(config)#
+S1(config)#interface vlan 10
+S1(config-if)#
+%LINK-5-CHANGED: Interface Vlan10, changed state to up
+
+S1(config-if)#ip address 192.168.10.11 255.255.255.0
+S1(config-if)#no shut
+S1(config-if)#no shutdown 
+S1(config-if)#exit
+S1(config)#ip def
+S1(config)#ip default-gateway 192.168.10.1
+S1(config)#
+```
+
+Для S2:
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_7.png)
+
 + Назначьте все неиспользуемые порты коммутатора VLAN Parking_Lot, настройте их для статического режима доступа и административно деактивируйте их.
 Примечание. Команда interface range полезна для выполнения этой задачи с минимальным количеством команд.
+
+```
+S1(config)#
+S1(config)#interface range f0/2-4, f0/7-24, g0/1-2
+S1(config-if-range)#swi
+S1(config-if-range)#switchport mode ac
+S1(config-if-range)#switchport mode access 
+S1(config-if-range)#sw
+S1(config-if-range)#switchport ac
+S1(config-if-range)#switchport access vlan 999
+S1(config-if-range)#description unused_parking
+S1(config-if-range)#shutdown
+
+%LINK-5-CHANGED: Interface FastEthernet0/2, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/3, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/4, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/7, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/8, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/9, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/10, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/11, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/12, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/13, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/14, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/15, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/16, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/17, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/18, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/19, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/20, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/21, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/22, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/23, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/24, changed state to administratively down
+
+%LINK-5-CHANGED: Interface GigabitEthernet0/1, changed state to administratively down
+
+%LINK-5-CHANGED: Interface GigabitEthernet0/2, changed state to administratively down
+S1(config-if-range)#exit
+S1(config)#
+```
+
+```
+S2(config)#
+S2(config)#interface range f0/2-17, f0/19-24, g0/1-2
+S2(config-if-range)#swi
+S2(config-if-range)#switchport mode ac
+S2(config-if-range)#switchport mode access 
+S2(config-if-range)#sw
+S2(config-if-range)#switchport ac
+S2(config-if-range)#switchport access vlan 999
+S2(config-if-range)#de
+S2(config-if-range)#description unused_parking
+S2(config-if-range)#shutdown
+
+%LINK-5-CHANGED: Interface FastEthernet0/2, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/3, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/4, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/5, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/6, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/7, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/8, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/9, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/10, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/11, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/12, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/13, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/14, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/15, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/16, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/17, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/19, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/20, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/21, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/22, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/23, changed state to administratively down
+
+%LINK-5-CHANGED: Interface FastEthernet0/24, changed state to administratively down
+
+%LINK-5-CHANGED: Interface GigabitEthernet0/1, changed state to administratively down
+
+%LINK-5-CHANGED: Interface GigabitEthernet0/2, changed state to administratively down
+S2(config-if-range)#exit
+S2(config)#
+```
 
 ##### Шаг 2. Назначьте сети VLAN соответствующим интерфейсам коммутатора.
 
 + Назначьте используемые порты соответствующей VLAN (указанной в таблице VLAN выше) и настройте их для режима статического доступа.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_8.png)
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_9.png)
+
 + Убедитесь, что VLAN назначены на правильные интерфейсы.
 Закройте окно настройки.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_10.png)
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_11.png)
 
 #### Часть 3. Конфигурация магистрального канала стандарта 802.1Q между коммутаторами
 

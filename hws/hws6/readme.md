@@ -505,6 +505,7 @@ S2(config)#
   
 + Отправьте эхо-запрос с PC-A на PC-B.
 
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_25.png)
 
 + Отправьте команду ping с компьютера PC-A на коммутатор S2.
 

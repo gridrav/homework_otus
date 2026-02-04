@@ -467,7 +467,8 @@ S2(config)#
 
 Вопрос:
 Что произойдет, если G0/0/1 на R1 будет отключен?
-Закройте окно настройки.
+
+Отключение G0/0/1 на R1 приводит к  потере маршрутизации
 
 #### Часть 4. Настройка маршрутизации между сетями VLAN
 
@@ -475,9 +476,23 @@ S2(config)#
 
 Откройте окно конфигурации
 + При необходимости активируйте интерфейс G0/0/1 на маршрутизаторе.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_18.png)
+
 + Настройте подинтерфейсы для каждой VLAN, как указано в таблице IP-адресации. Все подинтерфейсы используют инкапсуляцию 802.1Q. Убедитесь, что подинтерфейсу для native VLAN не назначен IP-адрес. Включите описание для каждого подинтерфейса.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_19.png)
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_20.png)
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_21.png)
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_22.png)
+
 + Убедитесь, что вспомогательные интерфейсы работают
-Закройте окно настройки.
+
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_23.png)
 
 #### Часть 5. Проверьте, работает ли маршрутизация между VLAN
 
@@ -485,7 +500,12 @@ S2(config)#
 
 Примечание. Возможно, вам придется отключить брандмауэр ПК для работы ping
 + Отправьте эхо-запрос с PC-A на шлюз по умолчанию.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_24.png)
+  
 + Отправьте эхо-запрос с PC-A на PC-B.
+
+
 + Отправьте команду ping с компьютера PC-A на коммутатор S2.
 
 ##### Шаг 2. Пройдите следующий тест с PC-B

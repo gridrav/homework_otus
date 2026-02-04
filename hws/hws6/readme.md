@@ -2,7 +2,7 @@
 
 ###  Топология:
 
-![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/top1.png)
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/to1.png)
 
 ###     Таблица адресации:
 
@@ -19,7 +19,7 @@
 
 ### Таблица VLAN:
 
-![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/top2.png)
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/to2.png)
 
 ### Задачи
 

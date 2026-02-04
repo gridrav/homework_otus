@@ -85,13 +85,13 @@
 + Установите cisco в качестве пароля виртуального терминала и активируйте вход.
 + Зашифруйте открытые пароли.
 + Создайте баннер с предупреждением о запрете несанкционированного доступа к устройству.
-+ Настройте на коммутаторах время.
-+ Сохранение текущей конфигурации в качестве начальной.
-Закройте окно настройки.
 
 Для первого коммутатора
 
  ![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_1.png)
+ 
++ Настройте на коммутаторах время.
++ Сохранение текущей конфигурации в качестве начальной.
 
  ![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_2.png)
 
@@ -330,14 +330,135 @@ S2(config)#
 
 + Настройка статического транкинга на интерфейсе F0/1 для обоих коммутаторов.
 Откройте окно конфигурации
+
+```
+S1#
+S1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+S1(config)#int
+S1(config)#interface f0/1
+S1(config-if)#sw
+S1(config-if)#switchport mode tr
+S1(config-if)#switchport mode trunk 
+
+S1(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan10, changed state to up
+
+S1(config-if)#
+S1(config-if)#sw
+S1(config-if)#switchport nonegotiate
+S1(config-if)#desc
+S1(config-if)#description trunk_to_S2
+S1(config-if)#no sh
+S1(config-if)#no shutdown 
+S1(config-if)#exit
+S1(config)#
+S1#
+```
+
+S2:
+
+```
+S2#
+S2#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+S2(config)#inter
+S2(config)#interface f0/1
+S2(config-if)#sw
+S2(config-if)#switchport mode tr
+S2(config-if)#switchport mode trunk 
+
+S2(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan10, changed state to up
+
+S2(config-if)#
+S2(config-if)#sw
+S2(config-if)#switchport nonegotiate
+S2(config-if)#des
+S2(config-if)#description trunk_to_S1
+S2(config-if)#no sh
+S2(config-if)#no shutdown 
+S2(config-if)#exit
+S2(config)#
+```
+
 + Установите native VLAN 1000 на обоих коммутаторах.
++ 
+```
+S1(config)#interface f0/1
+S1(config-if)#sw
+S1(config-if)#switchport tr
+S1(config-if)#switchport trunk na
+S1(config-if)#switchport trunk native vl
+S1(config-if)#switchport trunk native vlan 1000
+S1(config-if)#exit
+
+%CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on FastEthernet0/1 (1000), with S2 FastEthernet0/1 (1).
+
+%CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on FastEthernet0/1 (1000), with S2 FastEthernet0/1 (1).
+
+S1#
+%SYS-5-CONFIG_I: Configured from console by console
+```
+
+```
+S2(config)#interface f0/1
+S2(config-if)#sw
+S2(config-if)#switchport tr
+S2(config-if)#switchport trunk na
+S2(config-if)#switchport trunk native v
+S2(config-if)#switchport trunk native vlan 1000
+S2(config-if)#%SPANTREE-2-UNBLOCK_CONSIST_PORT: Unblocking FastEthernet0/1 on VLAN1000. Port consistency restored.
+
+%SPANTREE-2-UNBLOCK_CONSIST_PORT: Unblocking FastEthernet0/1 on VLAN0001. Port consistency restored.
+```
+
 + Укажите, что VLAN 10, 20, 30 и 1000 могут проходить по транку.
+  
+```
+S1(config)#interface f0/1
+S1(config-if)#sw
+S1(config-if)#switchport tr
+S1(config-if)#switchport trunk al
+S1(config-if)#switchport trunk allowed vlan 10,20,30,1000
+S1(config-if)#exit
+S1(config)#
+```
+
+```
+S2(config)#interface f0/1
+S2(config-if)#sw
+S2(config-if)#switchport tr
+S2(config-if)#switchport trunk all
+S2(config-if)#switchport trunk allowed vlan 10,20,30,1000
+S2(config-if)#exit
+S2(config)#
+```
+
 + Проверьте транки, native VLAN и разрешенные VLAN через транк.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_12.png)
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_13.png)
 
 ##### Шаг 2. Вручную настройте магистральный интерфейс F0/5 на коммутаторе S1.
 
 + Настройте интерфейс S1 F0/5 с теми же параметрами транка, что и F0/1. Это транк до маршрутизатора.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_14.png)
+
 + Сохраните текущую конфигурацию в файл загрузочной конфигурации.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_15.png)
+  
 + Проверка транкинга.
 
 Вопрос:

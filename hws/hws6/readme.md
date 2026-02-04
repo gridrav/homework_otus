@@ -461,6 +461,10 @@ S2(config)#
   
 + Проверка транкинга.
 
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_16.png)
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_17.png)
+
 Вопрос:
 Что произойдет, если G0/0/1 на R1 будет отключен?
 Закройте окно настройки.

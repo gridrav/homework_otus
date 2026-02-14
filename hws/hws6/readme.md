@@ -520,3 +520,8 @@ exit
 Какие промежуточные IP-адреса отображаются в результатах?
 
 В результатах отображаются следующие промежуточные IP-адреса: 192.168.30.1 — это IP-адрес подынтерфейса маршрутизатора R1 в VLAN 30 (шлюз по умолчанию для PC-B)
+
+
+Сохраненный файл cisco packet tracer [lab6-1.pkt]
+
+[lab6-1.pkt]:https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/lab6-1.pkt

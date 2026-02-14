@@ -11,7 +11,7 @@
 | R1               | G0/0/1.10      |192.168.10.1              |  255.255.255.0          |  -                   |       
 |                  | G0/0/1.20      |192.168.20.1              |  255.255.255.0          |  -                   |  
 |                  | G0/0/1.30      |192.168.30.1              |  255.255.255.0          |  -                   |  
-|                  | G0/0/1.1000    |-                         |-                        |                      |
+|                  | G0/0/1.1000    |-                         |-                        |  -                   |
 | S1               | VLAN 10        | 192.168.10.11            |  255.255.255.0          | 192.168.10.1         |
 | S2               | VLAN 10        | 192.168.10.12            |  255.255.255.0          | 192.168.10.1         | 
 | PC-A             | NIC            | 192.168.20.3              | 255.255.255.0          | 192.168.20.1         | 
@@ -51,14 +51,11 @@
 
 Подключите устройства, как показано в топологии, и подсоедините необходимые кабели.
 
-![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/top3.png)
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_1-5.png)
 
 ##### Шаг 2. Настройте базовые параметры для маршрутизатора.
 
 + Подключитесь к маршрутизатору с помощью консоли и активируйте привилегированный режим EXEC.
-  
-Откройте окно конфигурации
-
 + Войдите в режим конфигурации.
 + Назначьте маршрутизатору имя устройства.
 + Отключите поиск DNS, чтобы предотвратить попытки маршрутизатора неверно преобразовывать введенные команды таким образом, как будто они являются именами узлов.
@@ -481,18 +478,13 @@ S2(config)#
 
 + Настройте подинтерфейсы для каждой VLAN, как указано в таблице IP-адресации. Все подинтерфейсы используют инкапсуляцию 802.1Q. Убедитесь, что подинтерфейсу для native VLAN не назначен IP-адрес. Включите описание для каждого подинтерфейса.
 
-![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_19.png)
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_1-1.png)
 
-![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_20.png)
-
-![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_21.png)
-
-![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_22.png)
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_1-2.png)
 
 + Убедитесь, что вспомогательные интерфейсы работают
 
-
-![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_23.png)
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_1-6.png)
 
 #### Часть 5. Проверьте, работает ли маршрутизация между VLAN
 
@@ -509,8 +501,15 @@ S2(config)#
 
 + Отправьте команду ping с компьютера PC-A на коммутатор S2.
 
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_1-3.png)
+
 ##### Шаг 2. Пройдите следующий тест с PC-B
 
 В окне командной строки на PC-B выполните команду tracert на адрес PC-A.
+
+![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_1-4.png)
+
 Вопрос:
 Какие промежуточные IP-адреса отображаются в результатах?
+
+В результатах отображаются следующие промежуточные IP-адреса: 192.168.30.1 — это IP-адрес подынтерфейса маршрутизатора R1 в VLAN 30 (шлюз по умолчанию для PC-B)

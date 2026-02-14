@@ -473,8 +473,15 @@ S2(config)#
 
 Откройте окно конфигурации
 + При необходимости активируйте интерфейс G0/0/1 на маршрутизаторе.
-
-![alt-текст](https://github.com/gridrav/homework_otus/blob/main/hws/hws6/Screens/Screenshot_18.png)
+  
+```
+enable
+configure terminal
+interface g0/1
+no shutdown
+description Trunk_to_S1_F0/5
+exit
+```
 
 + Настройте подинтерфейсы для каждой VLAN, как указано в таблице IP-адресации. Все подинтерфейсы используют инкапсуляцию 802.1Q. Убедитесь, что подинтерфейсу для native VLAN не назначен IP-адрес. Включите описание для каждого подинтерфейса.
 
